@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSnippetCompiler", "SharpSnippetCompiler\SharpSnippetCompiler.csproj", "{A63633B4-2C31-4CFF-B2A3-92EAB1AB448E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSnippetCompiler.Core", "SharpSnippetCompiler.Core\SharpSnippetCompiler.Core.csproj", "{5A2EC8F7-2274-4EA3-AC7A-6D1C8598F938}"
@@ -42,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94A3F19A-F979-4611-A7C1-8CB8D9042892}
 	EndGlobalSection
 EndGlobal
