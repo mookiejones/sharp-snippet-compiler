@@ -25,28 +25,22 @@
 // IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 // OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-using System;
 using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Gui;
-using ICSharpCode.SharpSnippetCompiler.Core;
 
 namespace ICSharpCode.SharpSnippetCompiler
 {
 	public class TextEditorDisplayBinding : IDisplayBinding
 	{
-		public TextEditorDisplayBinding()
-		{
-		}
-		
-		public bool CanCreateContentForFile(string fileName)
+        public bool CanCreateContentForFile(string fileName)
 		{
 			return true;
 		}
 		
 		public IViewContent CreateContentForFile(OpenedFile file)
 		{
-			MainForm form = WorkbenchSingleton.MainForm as MainForm;
-			return form.LoadFile(file.FileName);
+			var form = WorkbenchSingleton.MainForm as MainForm;
+			return form?.LoadFile(file.FileName);
 		}
 	}
 }

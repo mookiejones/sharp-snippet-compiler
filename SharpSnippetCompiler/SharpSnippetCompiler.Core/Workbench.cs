@@ -1,23 +1,23 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Gui;
+using ICSharpCode.SharpSnippetCompiler.Core.Properties;
 
 namespace ICSharpCode.SharpSnippetCompiler.Core
 {
 	public class Workbench : IWorkbench
 	{
-		readonly static string viewContentPath = "/SharpDevelop/Workbench/Pads";
+        private readonly static string ViewContentPath = "/SharpDevelop/Workbench/Pads";
 
-		Form mainForm;
-		List<PadDescriptor> padDescriptors = new List<PadDescriptor>();
-		List<IViewContent> views = new List<IViewContent>();
-		IWorkbenchLayout workbenchLayout;
-		IViewContent activeViewContent;
-		object activeContent;
+        private Form _mainForm;
+        private List<PadDescriptor> _padDescriptors = new List<PadDescriptor>();
+        private List<IViewContent> _views = new List<IViewContent>();
+        private IWorkbenchLayout _workbenchLayout;
+        private IViewContent _activeViewContent;
+        private object _activeContent;
 		
 		public event EventHandler ActiveWorkbenchWindowChanged;
 		public event EventHandler ActiveViewContentChanged;		
@@ -28,11 +28,11 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 
 		public Workbench(Form mainForm)
 		{
-			this.mainForm = mainForm;
+			this._mainForm = mainForm;
 		}
 		
 		public Form MainForm {
-			get { return mainForm; }
+			get { return _mainForm; }
 		}
 		
 		public string Title {
@@ -45,11 +45,11 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		}
 		
 		public ICollection<IViewContent> ViewContentCollection {
-			get { return views; }
+			get { return _views; }
 		}
 		
 		public ICollection<IViewContent> PrimaryViewContents {
-			get { return views.AsReadOnly(); }
+			get { return _views.AsReadOnly(); }
 		}
 		
 		public IList<IWorkbenchWindow> WorkbenchWindowCollection {
@@ -59,31 +59,31 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		}
 		
 		public IList<PadDescriptor> PadContentCollection {
-			get { return padDescriptors; }
+			get { return _padDescriptors; }
 		}
 		
 		public IWorkbenchWindow ActiveWorkbenchWindow {
 			get {
-				if (activeViewContent != null) {
-					return activeViewContent.WorkbenchWindow;
+				if (_activeViewContent != null) {
+					return _activeViewContent.WorkbenchWindow;
 				}
 				return null;
 			}
 		}
 		
 		public IViewContent ActiveViewContent {
-			get { return activeViewContent; }
-			set { activeViewContent = value; }
+			get { return _activeViewContent; }
+			set { _activeViewContent = value; }
 		}
 		
 		public object ActiveContent {
-			get { return activeContent; }
-			set { activeContent = value; }
+			get { return _activeContent; }
+			set { _activeContent = value; }
 		}
 		
 		public IWorkbenchLayout WorkbenchLayout {
-			get { return workbenchLayout; }
-			set { workbenchLayout = value; }
+			get { return _workbenchLayout; }
+			set { _workbenchLayout = value; }
 		}
 		
 		public bool IsActiveWindow {
@@ -94,7 +94,7 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		
 		public void ShowView(IViewContent content)
 		{
-			views.Add(content);
+			_views.Add(content);
 			OnViewOpened(new ViewContentEventArgs(content));
 		}
 		
@@ -115,7 +115,7 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		
 		public PadDescriptor GetPad(Type type)
 		{
-			foreach (PadDescriptor pad in padDescriptors) {
+			foreach (var pad in _padDescriptors) {
 				if (pad.Class == type.FullName) {
 					return pad;
 				}
@@ -125,8 +125,8 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		
 		public void CloseContent(IViewContent content)
 		{
-			if (views.Contains(content)) {
-				views.Remove(content);
+			if (_views.Contains(content)) {
+				_views.Remove(content);
 			}
 			
 			content.Dispose();
@@ -142,28 +142,28 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 			throw new NotImplementedException();
 		}
 		
-		public Properties CreateMemento()
+		public ICSharpCode.Core.Properties CreateMemento()
 		{
 			throw new NotImplementedException();
 		}
 		
-		public void SetMemento(Properties memento)
+		public void SetMemento(ICSharpCode.Core.Properties memento)
 		{
-			Console.WriteLine("Workbench.SetMemento not implemented");
+			Console.WriteLine(Resources.SetMemento_not_implemented);
 		}
 		
 		public void UpdateRenderer()
 		{
-			Console.WriteLine("Workbench.UpdateRenderer not implemented");
+			Console.WriteLine(Resources.UpdateRenderer_not_implemented);
 		}
 		
 		public void Initialize()
 		{
 			try {
-				ArrayList contents = AddInTree.GetTreeNode(viewContentPath).BuildChildItems(this);
+				var contents = AddInTree.GetTreeNode(ViewContentPath).BuildChildItems(this);
 				foreach (PadDescriptor content in contents) {
 					if (content != null) {
-						padDescriptors.Add(content);
+						_padDescriptors.Add(content);
 					}
 				}
 			} catch (TreePathNotFoundException) {}			

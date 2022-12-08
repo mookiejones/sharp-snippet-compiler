@@ -7,48 +7,46 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 using System.Resources;
 
 using ICSharpCode.Core;
-using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Commands;
-using ICSharpCode.SharpDevelop.Project;
-using ICSharpCode.SharpDevelop.Sda;
-using ICSharpCode.SharpDevelop.Gui;
 
 namespace ICSharpCode.SharpSnippetCompiler.Core
 {
 	public sealed class SharpSnippetCompilerManager
-	{		
-		SharpSnippetCompilerManager()
+	{
+        private SharpSnippetCompilerManager()
 		{
 		}
 		
 		public static void Init()
 		{
-			SharpSnippetCompilerManager manager = new SharpSnippetCompilerManager();
-			Assembly exe = manager.GetType().Assembly;
+			var manager = new SharpSnippetCompilerManager();
+			var exe = manager.GetType().Assembly;
 			
-			string rootPath = Path.GetDirectoryName(exe.Location);
-			string configDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SharpSnippetCompiler");
-			string dataDirectory = Path.Combine(rootPath, "data");
+			var rootPath = Path.GetDirectoryName(exe.Location);
+			var configDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SharpSnippetCompiler");
+            if (rootPath != null)
+            {
+                var dataDirectory = Path.Combine(rootPath, "data");
 
-			CoreStartup startup = new CoreStartup("SharpSnippetCompiler");
-			startup.ConfigDirectory = configDirectory;
-			startup.DataDirectory = dataDirectory;
-			startup.PropertiesName = "SharpSnippetCompiler";
+                var startup = new CoreStartup("SharpSnippetCompiler");
+                startup.ConfigDirectory = configDirectory;
+                startup.DataDirectory = dataDirectory;
+                startup.PropertiesName = "SharpSnippetCompiler";
 
-			startup.StartCoreServices();
+                startup.StartCoreServices();
 						
-			ResourceService.RegisterNeutralStrings(new ResourceManager("Resources.StringResources", exe));
-			ResourceService.RegisterNeutralImages(new ResourceManager("Resources.BitmapResources", exe));
+                ResourceService.RegisterNeutralStrings(new ResourceManager("Resources.StringResources", exe));
+                ResourceService.RegisterNeutralImages(new ResourceManager("Resources.BitmapResources", exe));
 
-			StringParser.RegisterStringTagProvider(new SharpDevelopStringTagProvider());
+                StringParser.RegisterStringTagProvider(new SharpDevelopStringTagProvider());
 			
-			string addInFolder = Path.Combine(rootPath, "AddIns");
-			startup.AddAddInsFromDirectory(addInFolder);
-			startup.RunInitialization();
-		}
+                var addInFolder = Path.Combine(rootPath, "AddIns");
+                startup.AddAddInsFromDirectory(addInFolder);
+                startup.RunInitialization();
+            }
+        }
 	}
 }

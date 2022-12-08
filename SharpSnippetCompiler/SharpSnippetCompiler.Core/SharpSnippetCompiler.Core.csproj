@@ -122,6 +122,11 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BuildSnippetCommand.cs" />
     <Compile Include="MainViewContent.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SharpSnippetCompilerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +144,10 @@
     <EmbeddedResource Include="..\resources\StringResources.resources">
       <Link>Resources\StringResources.resources</Link>
       <LogicalName>Resources.StringResources.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SharpSnippetCompilerControl.resx">
       <DependentUpon>SharpSnippetCompilerControl.cs</DependentUpon>

@@ -25,7 +25,6 @@
 // IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 // OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-using System;
 using System.Windows.Forms;
 
 using ICSharpCode.SharpSnippetCompiler.Core;
@@ -34,16 +33,16 @@ namespace ICSharpCode.SharpSnippetCompiler
 {
 	public class SnippetTabPage : TabPage
 	{
-		SharpSnippetCompilerControl snippetControl;
+        private SharpSnippetCompilerControl _snippetControl;
 		
 		public SnippetTabPage(SharpSnippetCompilerControl snippetControl)
 		{
-			this.snippetControl = snippetControl;
+			this._snippetControl = snippetControl;
 			Controls.Add(snippetControl);
 		}
 		
 		public SharpSnippetCompilerControl SnippetCompilerControl {
-			get { return snippetControl; }
+			get { return _snippetControl; }
 		}
 	}
 }

@@ -16,16 +16,16 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 {
 	public class SnippetCompilerProject : CompilableProject
 	{
-		static readonly string DefaultSnippetSource = "using System;\r\n\r\n" +
-			"public class Program\r\n" +
-			"{\r\n" +
-			"\t[STAThread]\r\n" +
-			"\tstatic void Main(string[] args)\r\n" +
-			"\t{\r\n" +
-			"\t}\r\n" +
-			"}";
+        private static readonly string DefaultSnippetSource = "using System;\r\n\r\n" +
+                                                              "public class Program\r\n" +
+                                                              "{\r\n" +
+                                                              "\t[STAThread]\r\n" +
+                                                              "\tstatic void Main(string[] args)\r\n" +
+                                                              "\t{\r\n" +
+                                                              "\t}\r\n" +
+                                                              "}";
 
-		SnippetCompilerProject() : base(new Solution())
+        private SnippetCompilerProject() : base(new Solution())
 		{
 			Create();			
 		}
@@ -82,10 +82,10 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 			CreateSnippetFile();
 			ProjectService.LoadProject(SnippetProjectFileName);			
 		}
-		
-		void Create()
+
+        private void Create()
 		{
-			ProjectCreateInformation info = new ProjectCreateInformation();
+			var info = new ProjectCreateInformation();
 			info.Solution = new Solution();
 			info.OutputProjectFileName = Path.Combine(PropertyService.ConfigDirectory, "SharpSnippet.exe");
 			info.ProjectName = "SharpSnippet";
@@ -96,14 +96,14 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		/// <summary>
 		/// Loads the snippet project or creates one if it does not already exist.
 		/// </summary>
-		static void CreateSnippetProject()
+        private static void CreateSnippetProject()
 		{
-			string fileName = SnippetProjectFileName;
+			var fileName = SnippetProjectFileName;
 			if (!File.Exists(fileName)) {
 							
 				// Add single snippet file to project.
-				SnippetCompilerProject project = new SnippetCompilerProject();
-				FileProjectItem item = new FileProjectItem(project, ItemType.Compile, "Snippet.cs");
+				var project = new SnippetCompilerProject();
+				var item = new FileProjectItem(project, ItemType.Compile, "Snippet.cs");
 				ProjectService.AddProjectItem(project, item);
 				
 				project.Save(fileName);
@@ -113,12 +113,12 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		/// <summary>
 		/// Loads the snippet file or creates one if it does not already exist. 
 		/// </summary>
-		static void CreateSnippetFile()
+        private static void CreateSnippetFile()
 		{
-			string fileName = SnippetFileName;
+			var fileName = SnippetFileName;
 			if (!File.Exists(fileName)) {
-				LoggingService.Info("Creating Snippet.cs file: " + fileName);
-				using (StreamWriter snippetFile = File.CreateText(fileName)) {
+				LoggingService.Info($"Creating Snippet.cs file: {fileName}");
+				using (var snippetFile = File.CreateText(fileName)) {
 					snippetFile.Write(DefaultSnippetSource);
 				}
 			}

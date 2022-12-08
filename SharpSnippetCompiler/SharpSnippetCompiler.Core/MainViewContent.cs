@@ -21,18 +21,18 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 {
 	public class MainViewContent : IViewContent, ITextEditorControlProvider, IClipboardHandler, IUndoHandler, IPositionable, IParseInformationListener, IEditable
 	{
-		IWorkbenchWindow workbenchWindow;
-		TextEditorControl textEditor;
-		SharpSnippetCompilerControl snippetControl;
-		SnippetFile file;
+        private IWorkbenchWindow _workbenchWindow;
+        private TextEditorControl _textEditor;
+        private SharpSnippetCompilerControl _snippetControl;
+        private SnippetFile _file;
 		
 		public MainViewContent(string fileName, SharpSnippetCompilerControl snippetControl, IWorkbenchWindow workbenchWindow)
 		{
-			file = new SnippetFile(fileName);
-			this.snippetControl = snippetControl;
-			this.textEditor = snippetControl.TextEditor;
-			this.workbenchWindow = workbenchWindow;
-			this.workbenchWindow.ActiveViewContent = this;
+			_file = new SnippetFile(fileName);
+			this._snippetControl = snippetControl;
+			this._textEditor = snippetControl.TextEditor;
+			this._workbenchWindow = workbenchWindow;
+			this._workbenchWindow.ActiveViewContent = this;
 		}
 		
 		public event EventHandler TabPageTextChanged;
@@ -41,79 +41,79 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		public event EventHandler IsDirtyChanged;
 		
 		public bool EnableUndo {
-			get { return textEditor.EnableUndo; }
+			get { return _textEditor.EnableUndo; }
 		}
 		
 		public bool EnableRedo {
-			get { return textEditor.EnableRedo; }
+			get { return _textEditor.EnableRedo; }
 		}
 		
 		public void Undo()
 		{
-			textEditor.Undo();
+			_textEditor.Undo();
 		}
 		
 		public void Redo()
 		{
-			textEditor.Redo();
+			_textEditor.Redo();
 		}
 	
 		public bool EnableCut {
-			get { return textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCut; }
+			get { return _textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCut; }
 		}
 		
 		public bool EnableCopy {
-			get { return textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCopy; }
+			get { return _textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCopy; }
 		}
 		
 		public bool EnablePaste {
-			get { return textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnablePaste; }
+			get { return _textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnablePaste; }
 		}
 		
 		public bool EnableDelete {
-			get { return textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableDelete; }
+			get { return _textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableDelete; }
 		}
 		
 		public bool EnableSelectAll {
-			get { return textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableSelectAll; }
+			get { return _textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableSelectAll; }
 		}
 		
 		public void Cut()
 		{
-			textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(null, null);
+			_textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(null, null);
 		}
 		
 		public void Copy()
 		{
-			textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(null, null);
+			_textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(null, null);
 		}
 		
 		public void Paste()
 		{
-			textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(null, null);
+			_textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(null, null);
 		}
 		
 		public void Delete()
 		{
-			textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Delete(null, null);
+			_textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.Delete(null, null);
 		}
 		
 		public void SelectAll()
 		{
-			textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.SelectAll(null, null);
+			_textEditor.ActiveTextAreaControl.TextArea.ClipboardHandler.SelectAll(null, null);
 		}
 				
 		public TextEditorControl TextEditorControl {
-			get { return textEditor; }
+			get { return _textEditor; }
 		}
 		
 		public Control Control {
-			get { return snippetControl; }
+			get { return _snippetControl; }
 		}
 		
 		public IWorkbenchWindow WorkbenchWindow {
-			get { return workbenchWindow; }
-			set { workbenchWindow = value; }
+			get { return _workbenchWindow; }
+			set { _workbenchWindow = value; }
 		}
 		
 		public string TabPageText {
@@ -135,11 +135,11 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		}
 		
 		public OpenedFile PrimaryFile {
-			get { return file; }
+			get { return _file; }
 		}
 		
 		public string PrimaryFileName {
-			get { return file.FileName; }
+			get { return _file.FileName; }
 		}
 		
 		public bool IsDisposed {
@@ -223,7 +223,7 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		
 		public void JumpTo(int line, int column)
 		{
-			textEditor.ActiveTextAreaControl.JumpTo(line, column);
+			_textEditor.ActiveTextAreaControl.JumpTo(line, column);
 			
 //			// we need to delay this call here because the text editor does not know its height if it was just created
 //			WorkbenchSingleton.SafeThreadAsyncCall(
@@ -234,16 +234,16 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		}
 		
 		public int Line {
-			get { return textEditor.ActiveTextAreaControl.Caret.Line; }
+			get { return _textEditor.ActiveTextAreaControl.Caret.Line; }
 		}
 		
 		public int Column {
-			get { return textEditor.ActiveTextAreaControl.Caret.Column; }
+			get { return _textEditor.ActiveTextAreaControl.Caret.Column; }
 		}
 		
 		public void ParseInformationUpdated(ParseInformation parseInfo)
 		{
-			if (textEditor.TextEditorProperties.EnableFolding) {
+			if (_textEditor.TextEditorProperties.EnableFolding) {
 				WorkbenchSingleton.SafeThreadAsyncCall(ParseInformationUpdatedInvoked, parseInfo);
 			}
 		}
@@ -294,27 +294,27 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 			if (IsDirtyChanged != null) {
 				IsDirtyChanged(this, e);
 			}
-		}		
-		
-		void ParseInformationUpdatedInvoked(ParseInformation parseInfo)
+		}
+
+        private void ParseInformationUpdatedInvoked(ParseInformation parseInfo)
 		{
 			try {
-				textEditor.Document.FoldingManager.UpdateFoldings(file.FileName, parseInfo);
-				textEditor.ActiveTextAreaControl.TextArea.Refresh(textEditor.ActiveTextAreaControl.TextArea.FoldMargin);
-				textEditor.ActiveTextAreaControl.TextArea.Refresh(textEditor.ActiveTextAreaControl.TextArea.IconBarMargin);
+				_textEditor.Document.FoldingManager.UpdateFoldings(_file.FileName, parseInfo);
+				_textEditor.ActiveTextAreaControl.TextArea.Refresh(_textEditor.ActiveTextAreaControl.TextArea.FoldMargin);
+				_textEditor.ActiveTextAreaControl.TextArea.Refresh(_textEditor.ActiveTextAreaControl.TextArea.IconBarMargin);
 			} catch (Exception ex) {
 				MessageService.ShowError(ex);
 			}
 		}
-		
-		string GetText()
+
+        private string GetText()
 		{
-			return textEditor.Document.TextContent;
+			return _textEditor.Document.TextContent;
 		}
-		
-		void SetText(string value)
+
+        private void SetText(string value)
 		{
-			textEditor.Document.Replace(0, textEditor.Document.TextLength, value);
+			_textEditor.Document.Replace(0, _textEditor.Document.TextLength, value);
 		}		
 	}
 }

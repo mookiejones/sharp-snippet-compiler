@@ -26,7 +26,6 @@
 // OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -40,39 +39,40 @@ using ICSharpCode.SharpSnippetCompiler.Core;
 namespace ICSharpCode.SharpSnippetCompiler
 {
 	public sealed class Program
-	{		
-		MainForm mainForm;
+	{
+        private MainForm _mainForm;
 		
 		[STAThread]
-		static void Main(string[] args)
+        private static void Main()
 		{
-			Program program = new Program();
-			program.Run(args);
+			var program = new Program();
+			program.Run();
 		}
-		
-		void Run(string[] args)
+
+        private void Run()
 		{						
 			SharpSnippetCompilerManager.Init();
 		
-			mainForm = new MainForm();
+			_mainForm = new MainForm();
 			
 			// Force creation of the debugger before workbench is created.
-			IDebugger debugger = DebuggerService.CurrentDebugger;
+            // ReSharper disable once UnusedVariable
+            var debugger = DebuggerService.CurrentDebugger;
 			
-			Workbench workbench = new Workbench(mainForm);
+			var workbench = new Workbench(_mainForm);
 			WorkbenchSingleton.InitializeWorkbench(workbench, new WorkbenchLayout());
-			PadDescriptor errorList = workbench.GetPad(typeof(ErrorListPad));
+			var errorList = workbench.GetPad(typeof(ErrorListPad));
 			errorList.CreatePad();
-			mainForm.ErrorList = errorList.PadContent.Control;			
+			_mainForm.ErrorList = errorList.PadContent.Control;			
 			
-			PadDescriptor outputList = workbench.GetPad(typeof(CompilerMessageView));
+			var outputList = workbench.GetPad(typeof(CompilerMessageView));
 			outputList.CreatePad();
-			mainForm.OutputList = outputList.PadContent.Control;
+			_mainForm.OutputList = outputList.PadContent.Control;
 			
-			mainForm.Visible = true;
+			_mainForm.Visible = true;
 			
 			SnippetCompilerProject.Load();
-			IProject project = GetCurrentProject();
+			var project = GetCurrentProject();
 			ProjectService.CurrentProject = project;
 			LoadFiles(project);
 			
@@ -81,7 +81,7 @@ namespace ICSharpCode.SharpSnippetCompiler
 			//WorkbenchSingleton.SafeThreadAsyncCall(new Action<Program>(LoadFile));
 							
 			try {
-				Application.Run(mainForm);
+				Application.Run(_mainForm);
 			} finally {
 				try {
 					// Save properties
@@ -92,19 +92,19 @@ namespace ICSharpCode.SharpSnippetCompiler
 			}
 		}
 
-		void LoadFiles(IProject project)
+        private void LoadFiles(IProject project)
 		{
-			foreach (ProjectItem item in project.Items) {
-				FileProjectItem fileItem = item as FileProjectItem;
+			foreach (var item in project.Items) {
+				var fileItem = item as FileProjectItem;
 				if (fileItem != null && File.Exists(item.FileName)) {
-					mainForm.LoadFile(item.FileName);
+					_mainForm.LoadFile(item.FileName);
 				}
 			}
 		}
-				
-		IProject GetCurrentProject()
+
+        private IProject GetCurrentProject()
 		{
-			foreach (IProject project in ProjectService.OpenSolution.Projects) {
+			foreach (var project in ProjectService.OpenSolution.Projects) {
 				return project;
 			}
 			return null;

@@ -12,29 +12,29 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 {
 	public partial class SharpSnippetCompilerControl : UserControl
 	{
-		SharpDevelopTextAreaControl textEditor;
+        private readonly SharpDevelopTextAreaControl _textEditor;
 		
 		public SharpSnippetCompilerControl()
 		{
 			InitializeComponent();
 			
-			textEditor = new SharpDevelopTextAreaControl();
-			textEditor.Dock = DockStyle.Fill;
-			this.Controls.Add(textEditor);
+			_textEditor = new SharpDevelopTextAreaControl();
+			_textEditor.Dock = DockStyle.Fill;
+			this.Controls.Add(_textEditor);
 		}
 		
 		public TextEditorControl TextEditor {
-			get { return textEditor; }
+			get { return _textEditor; }
 		}
 				
 		public void LoadFile(string fileName)
 		{
-			textEditor.LoadFile(fileName);
+			_textEditor.LoadFile(fileName);
 		}
 		
 		public void Save()
 		{
-			textEditor.SaveFile(textEditor.FileName);
+			_textEditor.SaveFile(_textEditor.FileName);
 		}
 	}
 }

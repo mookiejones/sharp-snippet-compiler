@@ -28,16 +28,13 @@
 using System;
 using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Gui;
+using ICSharpCode.SharpSnippetCompiler.Core.Properties;
 
 namespace ICSharpCode.SharpSnippetCompiler
 {
 	public class WorkbenchLayout : IWorkbenchLayout
 	{
-		public WorkbenchLayout()
-		{
-		}
-		
-		public event EventHandler ActiveWorkbenchWindowChanged;
+        public event EventHandler ActiveWorkbenchWindowChanged;
 				
 		public IWorkbenchWindow ActiveWorkbenchWindow {
 			get {
@@ -63,7 +60,7 @@ namespace ICSharpCode.SharpSnippetCompiler
 		
 		public void ShowPad(PadDescriptor content)
 		{
-			Console.WriteLine("WorkbenchLayout.ShowPad not implemented");
+			Console.WriteLine(Resources.ShowPad_not_implemented);
 		}
 		
 		public void ActivatePad(PadDescriptor content)
@@ -73,13 +70,13 @@ namespace ICSharpCode.SharpSnippetCompiler
 		
 		public void ActivatePad(string fullyQualifiedTypeName)
 		{
-			Console.WriteLine("WorkbenchLayout.ActivatePad not implemented");
+			Console.WriteLine(Resources.ActivatePad_not_implemented);
 			if (fullyQualifiedTypeName.EndsWith("ErrorListPad")) {
-				MainForm mainForm = WorkbenchSingleton.MainForm as MainForm;
-				mainForm.ActivateErrorList();
+				var mainForm = WorkbenchSingleton.MainForm as MainForm;
+				mainForm?.ActivateErrorList();
 			} else if (fullyQualifiedTypeName.EndsWith("CompilerMessageView")) {
-				MainForm mainForm = WorkbenchSingleton.MainForm as MainForm;
-				mainForm.ActivateOutputList();			
+				var mainForm = WorkbenchSingleton.MainForm as MainForm;
+				mainForm?.ActivateOutputList();			
 			}
 		}
 		
@@ -115,12 +112,12 @@ namespace ICSharpCode.SharpSnippetCompiler
 			
 		public void LoadConfiguration()
 		{
-			Console.WriteLine("WorkbenchLayout.LoadConfiguration not implemented");
+			Console.WriteLine(Resources.LoadConfiguration_not_implemented);
 		}
 		
 		public void StoreConfiguration()
 		{
-			Console.WriteLine("WorkbenchLayout.StoreConfiguration not implemented");
+			Console.WriteLine(Resources.WorkbenchLayout_StoreConfiguration_WorkbenchLayout_StoreConfiguration_not_implemented);
 		}
 
 		protected virtual void OnActiveWorkbenchWindowChanged(EventArgs e)

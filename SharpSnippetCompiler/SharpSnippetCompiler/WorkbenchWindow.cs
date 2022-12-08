@@ -29,21 +29,20 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Gui;
 
 namespace ICSharpCode.SharpSnippetCompiler
 {
 	public class WorkbenchWindow : IWorkbenchWindow
 	{
-		TabControl tabControl;
-		SnippetTabPage tabPage;
-		IViewContent activeViewContent;
+        private TabControl _tabControl;
+        private SnippetTabPage _tabPage;
+        private IViewContent _activeViewContent;
 		
 		public WorkbenchWindow(TabControl tabControl, SnippetTabPage tabPage)
 		{
-			this.tabControl = tabControl;
-			this.tabPage = tabPage;
+			this._tabControl = tabControl;
+			this._tabPage = tabPage;
 		}
 		
 		public event EventHandler ActiveViewContentChanged;
@@ -65,8 +64,8 @@ namespace ICSharpCode.SharpSnippetCompiler
 		}
 		
 		public IViewContent ActiveViewContent {
-			get { return activeViewContent; }
-			set { activeViewContent = value; }
+			get { return _activeViewContent; }
+			set { _activeViewContent = value; }
 		}
 		
 		public Icon Icon {
@@ -96,7 +95,7 @@ namespace ICSharpCode.SharpSnippetCompiler
 		
 		public void SelectWindow()
 		{
-			tabControl.SelectedTab = tabPage;
+			_tabControl.SelectedTab = _tabPage;
 			OnWindowSelected(new EventArgs());
 		}
 		

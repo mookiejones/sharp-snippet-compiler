@@ -4,7 +4,6 @@
 //     <owner name="Matthew Ward" email="mrward@users.sourceforge.net"/>
 // </file>
 
-using System;
 using ICSharpCode.SharpDevelop.Project;
 using ICSharpCode.SharpDevelop.Project.Commands;
 

@@ -26,13 +26,9 @@
 // OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-
-using ICSharpCode.Core;
-using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Commands;
 using ICSharpCode.SharpDevelop.Gui;
 using ICSharpCode.SharpDevelop.Project;
@@ -96,9 +92,9 @@ namespace ICSharpCode.SharpSnippetCompiler
 		public IViewContent LoadFile(string fileName)
 		{
 			// Create a new tab page.
-			SharpSnippetCompilerControl snippetControl = new SharpSnippetCompilerControl();
+			var snippetControl = new SharpSnippetCompilerControl();
 			snippetControl.Dock = DockStyle.Fill;
-			SnippetTabPage tabPage = new SnippetTabPage(snippetControl);
+			var tabPage = new SnippetTabPage(snippetControl);
 			tabPage.Text = Path.GetFileName(fileName);
 
 			fileTabControl.TabPages.Add(tabPage);
@@ -107,8 +103,8 @@ namespace ICSharpCode.SharpSnippetCompiler
 			snippetControl.LoadFile(fileName);
 			snippetControl.Focus();
 			
-			WorkbenchWindow window = new WorkbenchWindow(fileTabControl, tabPage);
-			MainViewContent view = new MainViewContent(fileName, snippetControl, window);
+			var window = new WorkbenchWindow(fileTabControl, tabPage);
+			var view = new MainViewContent(fileName, snippetControl, window);
 			WorkbenchSingleton.Workbench.ShowView(view);
 			
 			UpdateActiveView(view);
@@ -125,112 +121,112 @@ namespace ICSharpCode.SharpSnippetCompiler
 		{
 			tabControl.SelectedIndex = 1;
 		}
-		
-		void ExitToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			SaveAll();
 			Close();
 		}
-		
-		void BuildCurrentToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void BuildCurrentToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			SaveAll();
-			BuildSnippetCommand buildSnippet = new BuildSnippetCommand(ProjectService.CurrentProject);
+			var buildSnippet = new BuildSnippetCommand(ProjectService.CurrentProject);
             buildSnippet.Run();
 		}
-     
-		void RunToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void RunToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			SaveAll();
-			Execute execute = new Execute();
+			var execute = new Execute();
 			execute.Run();
 		}
-		
-		void ContinueToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void ContinueToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			ContinueDebuggingCommand continueCommand = new ContinueDebuggingCommand();
+			var continueCommand = new ContinueDebuggingCommand();
 			continueCommand.Run();
 		}
-		
-		void StepOverToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void StepOverToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			StepDebuggingCommand stepCommand = new StepDebuggingCommand();
+			var stepCommand = new StepDebuggingCommand();
 			stepCommand.Run();
 		}
-		
-		void StepIntoToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void StepIntoToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			StepIntoDebuggingCommand stepCommand = new StepIntoDebuggingCommand();
+			var stepCommand = new StepIntoDebuggingCommand();
 			stepCommand.Run();
 		}
-		
-		void StepOutToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void StepOutToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			StepOutDebuggingCommand stepCommand = new StepOutDebuggingCommand();
+			var stepCommand = new StepOutDebuggingCommand();
 			stepCommand.Run();
 		}
-		
-		void StopToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void StopToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			StopDebuggingCommand stopCommand = new StopDebuggingCommand();
+			var stopCommand = new StopDebuggingCommand();
 			stopCommand.Run();
 		}
-		
-		void UndoToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void UndoToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Undo undo = new Undo();
+			var undo = new Undo();
 			undo.Run();
 		}
-		
-		void RedoToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void RedoToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Redo redo = new Redo();
+			var redo = new Redo();
 			redo.Run();
 		}
-		
-		void CutToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void CutToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Cut cut = new Cut();
+			var cut = new Cut();
 			cut.Run();
 		}
-		
-		void CopyToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void CopyToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Copy copy = new Copy();
+			var copy = new Copy();
 			copy.Run();
 		}
-		
-		void PasteToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void PasteToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Paste paste = new Paste();
+			var paste = new Paste();
 			paste.Run();
 		}
-		
-		void DeleteToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void DeleteToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Delete delete = new Delete();
+			var delete = new Delete();
 			delete.Run();
 		}
-		
-		void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			SelectAll selectAll = new SelectAll();
+			var selectAll = new SelectAll();
 			selectAll.Run();
 		}
-		
-		void ReferencesToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void ReferencesToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			IProject project = ProjectService.CurrentProject;
-			using (SelectReferenceDialog referenceDialog = new SelectReferenceDialog(project)) {
+			var project = ProjectService.CurrentProject;
+			using (var referenceDialog = new SelectReferenceDialog(project)) {
 				
 				// Add existing project references to dialog.
 				var existingReferences = GetReferences(project);
-				AddReferences(referenceDialog as ISelectReferenceDialog, existingReferences);
+				AddReferences(referenceDialog, existingReferences);
 
-				DialogResult result = referenceDialog.ShowDialog();
+				var result = referenceDialog.ShowDialog();
 				if (result == DialogResult.OK) {
 
-					ArrayList selectedReferences = referenceDialog.ReferenceInformations;
+					var selectedReferences = referenceDialog.ReferenceInformations;
 
                     // Add new references.
                     foreach (ReferenceProjectItem reference in selectedReferences) {
@@ -250,43 +246,43 @@ namespace ICSharpCode.SharpSnippetCompiler
 				}
 			}
 		}
-		
-		List<ReferenceProjectItem> GetReferences(IProject project)
+
+        private List<ReferenceProjectItem> GetReferences(IProject project)
 		{
-			List<ReferenceProjectItem> references = new List<ReferenceProjectItem>();
-			foreach (ProjectItem item in project.Items) {
-				ReferenceProjectItem reference = item as ReferenceProjectItem;
+			var references = new List<ReferenceProjectItem>();
+			foreach (var item in project.Items) {
+				var reference = item as ReferenceProjectItem;
 				if (reference != null) {
 					references.Add(reference);
 				}
 			}
 			return references;
 		}
-		
-		void AddReferences(ISelectReferenceDialog dialog, List<ReferenceProjectItem> references)
+
+        private void AddReferences(ISelectReferenceDialog dialog, List<ReferenceProjectItem> references)
 		{
-			foreach (ReferenceProjectItem reference in references) {
+			foreach (var reference in references) {
 				dialog.AddReference(reference.Include, "Gac", reference.FileName, reference);
 			}
 		}
-		
-		void UpdateActiveView(IViewContent view)
+
+        private void UpdateActiveView(IViewContent view)
 		{
-			Workbench workbench = WorkbenchSingleton.Workbench as Workbench;
-			workbench.ActiveViewContent = view;
-			workbench.ActiveContent = view;
-		}
-		
-		void FileTabControlSelectedIndexChanged(object sender, EventArgs e)
+            if (!(WorkbenchSingleton.Workbench is Workbench workbench)) return;
+            workbench.ActiveViewContent = view;
+            workbench.ActiveContent = view;
+        }
+
+        private void FileTabControlSelectedIndexChanged(object sender, EventArgs e)
 		{
 			UpdateActiveView();
 		}
 
-		void UpdateActiveView()
+        private void UpdateActiveView()
 		{
 			if (ActiveSnippetTabPage != null) {
-				SharpSnippetCompilerControl control = ActiveSnippetTabPage.SnippetCompilerControl;
-				foreach (IViewContent view in WorkbenchSingleton.Workbench.ViewContentCollection) {
+				var control = ActiveSnippetTabPage.SnippetCompilerControl;
+				foreach (var view in WorkbenchSingleton.Workbench.ViewContentCollection) {
 					if (view.Control == control) {
 						UpdateActiveView(view);
 						return;
@@ -297,20 +293,20 @@ namespace ICSharpCode.SharpSnippetCompiler
 			}
 		}
 
-		void SaveAll()
+        private void SaveAll()
 		{
 			foreach (SnippetTabPage tabPage in fileTabControl.TabPages) {
 				tabPage.SnippetCompilerControl.Save();
 			}
 		}
-		
-		void FileNewToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void FileNewToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			using (NewFileDialog dialog = new NewFileDialog()) {
+			using (var dialog = new NewFileDialog()) {
 				dialog.FileName = GetNewFileName();
 				if (dialog.ShowDialog() == DialogResult.OK) {
-					string fileName = dialog.FileName;
-					using (StreamWriter file = File.CreateText(fileName)) {
+					var fileName = dialog.FileName;
+					using (var file = File.CreateText(fileName)) {
 						file.Write(String.Empty);
 					}
 					LoadFile(fileName);
@@ -318,54 +314,56 @@ namespace ICSharpCode.SharpSnippetCompiler
 				}
 			}
 		}
-		
-		string GetNewFileName()
+
+        private string GetNewFileName()
 		{
-			string fileName = SnippetCompilerProject.GetFullFileName("Snippet1.cs");
-			string baseFolder = Path.GetDirectoryName(fileName);
-			int count = 1;
-			while (File.Exists(fileName)) {
-				count++;
-				fileName = Path.Combine(baseFolder, "Snippet" + count.ToString() + ".cs");
-			}
+			var fileName = SnippetCompilerProject.GetFullFileName("Snippet1.cs");
+			var baseFolder = Path.GetDirectoryName(fileName);
+			var count = 1;
+			while (File.Exists(fileName))
+            {
+                count++;
+                if (baseFolder != null) 
+                    fileName = Path.Combine(baseFolder, $"Snippet{count}.cs");
+            }
 			return fileName;
 		}
-		
-		void FileOpenToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void FileOpenToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			using (OpenFileDialog dialog = new OpenFileDialog()) {
+			using (var dialog = new OpenFileDialog()) {
 				dialog.CheckFileExists = true;
 				if (dialog.ShowDialog() == DialogResult.OK) {
-					foreach (string fileName in dialog.FileNames) {
+					foreach (var fileName in dialog.FileNames) {
 						LoadFile(fileName);
 						AddFileToProject(fileName);
 					}
 				}
 			}
 		}
-		
-		void AddFileToProject(string fileName)
+
+        private void AddFileToProject(string fileName)
 		{
-			IProject project = ProjectService.CurrentProject;
-			FileProjectItem item = new FileProjectItem(project, ItemType.Compile, fileName);
+			var project = ProjectService.CurrentProject;
+			var item = new FileProjectItem(project, ItemType.Compile, fileName);
 			ProjectService.AddProjectItem(project, item);
 			project.Save();
 		}
-		
-		void FileCloseToolStripMenuItemClick(object sender, EventArgs e)
+
+        private void FileCloseToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			SnippetTabPage activeTabPage = ActiveSnippetTabPage;
+			var activeTabPage = ActiveSnippetTabPage;
 			if (activeTabPage != null) {
-				SharpSnippetCompilerControl snippetControl = activeTabPage.SnippetCompilerControl;
+				var snippetControl = activeTabPage.SnippetCompilerControl;
 				snippetControl.Save();
-				string fileName = ActiveSnippetTabPage.SnippetCompilerControl.TextEditor.FileName;
-				IProject project = ProjectService.CurrentProject;
-				FileProjectItem item = project.FindFile(fileName);
+				var fileName = ActiveSnippetTabPage.SnippetCompilerControl.TextEditor.FileName;
+				var project = ProjectService.CurrentProject;
+				var item = project.FindFile(fileName);
 				if (item != null) {
 					ProjectService.RemoveProjectItem(project, item);
 					project.Save();
 					
-					foreach (IViewContent view in WorkbenchSingleton.Workbench.ViewContentCollection) {
+					foreach (var view in WorkbenchSingleton.Workbench.ViewContentCollection) {
 						if (view.Control == snippetControl) {
 							WorkbenchSingleton.Workbench.CloseContent(view);
 							break;
