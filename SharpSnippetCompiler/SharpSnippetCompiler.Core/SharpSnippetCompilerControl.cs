@@ -4,20 +4,9 @@
 //     <owner name="Matthew Ward" email="mrward@users.sourceforge.net"/>
 // </file>
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-
-using ICSharpCode.Core;
-using ICSharpCode.SharpDevelop;
-using ICSharpCode.SharpDevelop.Debugging;
-using ICSharpCode.SharpDevelop.Gui;
 using ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor;
 using ICSharpCode.TextEditor;
-using ICSharpCode.TextEditor.Document;
 
 namespace ICSharpCode.SharpSnippetCompiler.Core
 {
