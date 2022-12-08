@@ -1,0 +1,9 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="SharpSnippetCompiler.Setup" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="8882fc5c-7aa9-475c-b12f-2892123a4116">
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="ExampleComponents" />
+    </Feature>
+  </Package>
+</Wix>

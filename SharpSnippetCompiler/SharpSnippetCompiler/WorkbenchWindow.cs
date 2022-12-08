@@ -33,110 +33,96 @@ using ICSharpCode.SharpDevelop.Gui;
 
 namespace ICSharpCode.SharpSnippetCompiler
 {
-	public class WorkbenchWindow : IWorkbenchWindow
-	{
-        private TabControl _tabControl;
-        private SnippetTabPage _tabPage;
-        private IViewContent _activeViewContent;
-		
-		public WorkbenchWindow(TabControl tabControl, SnippetTabPage tabPage)
-		{
-			this._tabControl = tabControl;
-			this._tabPage = tabPage;
-		}
-		
-		public event EventHandler ActiveViewContentChanged;
-		public event EventHandler WindowSelected;		
-		public event EventHandler WindowDeselected;
-		public event EventHandler TitleChanged;
-		public event EventHandler CloseEvent;
-				
-		public string Title {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public bool IsDisposed {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public IViewContent ActiveViewContent {
-			get { return _activeViewContent; }
-			set { _activeViewContent = value; }
-		}
-		
-		public Icon Icon {
-			get {
-				throw new NotImplementedException();
-			}
-			set {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public IList<IViewContent> ViewContents {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public void SwitchView(int viewNumber)
-		{
-			throw new NotImplementedException();
-		}
-		
-		public bool CloseWindow(bool force)
-		{
-			throw new NotImplementedException();
-		}
-		
-		public void SelectWindow()
-		{
-			_tabControl.SelectedTab = _tabPage;
-			OnWindowSelected(new EventArgs());
-		}
-		
-		public void RedrawContent()
-		{
-			throw new NotImplementedException();
-		}
-		
-		public void OnWindowSelected(EventArgs e)
-		{
-			if (WindowSelected != null) {
-				WindowSelected(this, e);
-			}
-		}
+    public sealed class WorkbenchWindow : IWorkbenchWindow
+    {
+        private readonly TabControl _tabControl;
+        private readonly SnippetTabPage _tabPage;
 
-		public void OnWindowDeselected(EventArgs e)
-		{
-			if (WindowDeselected != null) {
-				WindowDeselected(this, e);
-			}
-		}
-		
-		protected virtual void OnActiveViewContentChanged(EventArgs e)
-		{
-			if (ActiveViewContentChanged != null) {
-				ActiveViewContentChanged(this, e);
-			}
-		}
+        public WorkbenchWindow(TabControl tabControl, SnippetTabPage tabPage)
+        {
+            _tabControl = tabControl;
+            _tabPage = tabPage;
+        }
 
-		protected virtual void OnTitleChanged(EventArgs e)
-		{
-			if (TitleChanged != null) {
-				TitleChanged(this, e);
-			}
-		}
+        public event EventHandler ActiveViewContentChanged;
+        public event EventHandler WindowSelected;
+        public event EventHandler WindowDeselected;
+        public event EventHandler TitleChanged;
+        public event EventHandler CloseEvent;
 
-		protected virtual void OnCloseEvent(EventArgs e)
-		{
-			if (CloseEvent != null) {
-				CloseEvent(this, e);
-			}
-		}		
-	}
+        public string Title => throw new NotImplementedException();
+
+        public bool IsDisposed => throw new NotImplementedException();
+
+        public IViewContent ActiveViewContent { get; set; }
+
+        public Icon Icon
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
+
+        public IList<IViewContent> ViewContents => throw new NotImplementedException();
+
+        public void SwitchView(int viewNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CloseWindow(bool force)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SelectWindow()
+        {
+            _tabControl.SelectedTab = _tabPage;
+            OnWindowSelected(EventArgs.Empty);
+        }
+
+        public void RedrawContent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnWindowSelected(EventArgs e)
+        {
+            if (WindowSelected != null)
+            {
+                WindowSelected(this, e);
+            }
+        }
+
+        public void OnWindowDeselected(EventArgs e)
+        {
+            if (WindowDeselected != null)
+            {
+                WindowDeselected(this, e);
+            }
+        }
+
+        private void OnActiveViewContentChanged(EventArgs e)
+        {
+            if (ActiveViewContentChanged != null)
+            {
+                ActiveViewContentChanged(this, e);
+            }
+        }
+
+        private void OnTitleChanged(EventArgs e)
+        {
+            if (TitleChanged != null)
+            {
+                TitleChanged(this, e);
+            }
+        }
+
+        private void OnCloseEvent(EventArgs e)
+        {
+            if (CloseEvent != null)
+            {
+                CloseEvent(this, e);
+            }
+        }
+    }
 }

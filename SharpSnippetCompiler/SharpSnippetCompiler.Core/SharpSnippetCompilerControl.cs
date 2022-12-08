@@ -20,14 +20,12 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 			
 			_textEditor = new SharpDevelopTextAreaControl();
 			_textEditor.Dock = DockStyle.Fill;
-			this.Controls.Add(_textEditor);
+			Controls.Add(_textEditor);
 		}
 		
-		public TextEditorControl TextEditor {
-			get { return _textEditor; }
-		}
-				
-		public void LoadFile(string fileName)
+		public TextEditorControl TextEditor => _textEditor;
+
+        public void LoadFile(string fileName)
 		{
 			_textEditor.LoadFile(fileName);
 		}

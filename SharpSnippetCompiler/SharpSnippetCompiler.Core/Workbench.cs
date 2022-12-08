@@ -8,18 +8,14 @@ using ICSharpCode.SharpSnippetCompiler.Core.Properties;
 
 namespace ICSharpCode.SharpSnippetCompiler.Core
 {
-	public class Workbench : IWorkbench
+	public sealed class Workbench : IWorkbench
 	{
-        private readonly static string ViewContentPath = "/SharpDevelop/Workbench/Pads";
+        private static readonly string ViewContentPath = "/SharpDevelop/Workbench/Pads";
 
-        private Form _mainForm;
-        private List<PadDescriptor> _padDescriptors = new List<PadDescriptor>();
-        private List<IViewContent> _views = new List<IViewContent>();
-        private IWorkbenchLayout _workbenchLayout;
-        private IViewContent _activeViewContent;
-        private object _activeContent;
-		
-		public event EventHandler ActiveWorkbenchWindowChanged;
+        private readonly List<PadDescriptor> _padDescriptors = new List<PadDescriptor>();
+        private readonly List<IViewContent> _views = new List<IViewContent>();
+
+        public event EventHandler ActiveWorkbenchWindowChanged;
 		public event EventHandler ActiveViewContentChanged;		
 		public event EventHandler ActiveContentChanged;		
 		public event ViewContentEventHandler ViewOpened;		
@@ -28,71 +24,42 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 
 		public Workbench(Form mainForm)
 		{
-			this._mainForm = mainForm;
+			MainForm = mainForm;
 		}
 		
-		public Form MainForm {
-			get { return _mainForm; }
-		}
+		public Form MainForm { get; }
+
+        public string Title {
+			get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
 		
-		public string Title {
+		public ICollection<IViewContent> ViewContentCollection => _views;
+
+        public ICollection<IViewContent> PrimaryViewContents => _views.AsReadOnly();
+
+        public IList<IWorkbenchWindow> WorkbenchWindowCollection => throw new NotImplementedException();
+
+        public IList<PadDescriptor> PadContentCollection => _padDescriptors;
+
+        public IWorkbenchWindow ActiveWorkbenchWindow {
 			get {
-				throw new NotImplementedException();
-			}
-			set {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public ICollection<IViewContent> ViewContentCollection {
-			get { return _views; }
-		}
-		
-		public ICollection<IViewContent> PrimaryViewContents {
-			get { return _views.AsReadOnly(); }
-		}
-		
-		public IList<IWorkbenchWindow> WorkbenchWindowCollection {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public IList<PadDescriptor> PadContentCollection {
-			get { return _padDescriptors; }
-		}
-		
-		public IWorkbenchWindow ActiveWorkbenchWindow {
-			get {
-				if (_activeViewContent != null) {
-					return _activeViewContent.WorkbenchWindow;
+				if (ActiveViewContent != null) {
+					return ActiveViewContent.WorkbenchWindow;
 				}
 				return null;
 			}
 		}
 		
-		public IViewContent ActiveViewContent {
-			get { return _activeViewContent; }
-			set { _activeViewContent = value; }
-		}
-		
-		public object ActiveContent {
-			get { return _activeContent; }
-			set { _activeContent = value; }
-		}
-		
-		public IWorkbenchLayout WorkbenchLayout {
-			get { return _workbenchLayout; }
-			set { _workbenchLayout = value; }
-		}
-		
-		public bool IsActiveWindow {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public void ShowView(IViewContent content)
+		public IViewContent ActiveViewContent { get; set; }
+
+        public object ActiveContent { get; set; }
+
+        public IWorkbenchLayout WorkbenchLayout { get; set; }
+
+        public bool IsActiveWindow => throw new NotImplementedException();
+
+        public void ShowView(IViewContent content)
 		{
 			_views.Add(content);
 			OnViewOpened(new ViewContentEventArgs(content));
@@ -168,43 +135,43 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 				}
 			} catch (TreePathNotFoundException) {}			
 		}
-		
-		protected virtual void OnActiveWorkbenchWindowChanged(EventArgs e)
+
+        private void OnActiveWorkbenchWindowChanged(EventArgs e)
 		{
 			if (ActiveWorkbenchWindowChanged != null) {
 				ActiveWorkbenchWindowChanged(this, e);
 			}
 		}
 
-		protected virtual void OnActiveViewContentChanged(EventArgs e)
+        private void OnActiveViewContentChanged(EventArgs e)
 		{
 			if (ActiveViewContentChanged != null) {
 				ActiveViewContentChanged(this, e);
 			}
 		}
 
-		protected virtual void OnActiveContentChanged(EventArgs e)
+        private void OnActiveContentChanged(EventArgs e)
 		{
 			if (ActiveContentChanged != null) {
 				ActiveContentChanged(this, e);
 			}
 		}
 
-		protected virtual void OnViewOpened(ViewContentEventArgs e)
+        private void OnViewOpened(ViewContentEventArgs e)
 		{
 			if (ViewOpened != null) {
 				ViewOpened(this, e);
 			}
 		}
 
-		protected virtual void OnViewClosed(ViewContentEventArgs e)
+        private void OnViewClosed(ViewContentEventArgs e)
 		{
 			if (ViewClosed != null) {
 				ViewClosed(this, e);
 			}
 		}
 
-		protected virtual void OnProcessCommandKey(KeyEventArgs e)
+        private void OnProcessCommandKey(KeyEventArgs e)
 		{
 			if (ProcessCommandKey != null) {
 				ProcessCommandKey(this, e);

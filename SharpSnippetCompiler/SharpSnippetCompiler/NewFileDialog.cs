@@ -43,8 +43,8 @@ namespace ICSharpCode.SharpSnippetCompiler
 		}
 		
 		public string FileName {
-			get { return fileNameTextBox.Text; }
-			set { fileNameTextBox.Text = value; }
-		}
+			get => fileNameTextBox.Text;
+            set => fileNameTextBox.Text = value;
+        }
 	}
 }

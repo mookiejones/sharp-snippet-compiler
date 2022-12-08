@@ -79,17 +79,11 @@ namespace ICSharpCode.SharpSnippetCompiler
 		/// <summary>
 		/// Gets the active text editor control.
 		/// </summary>
-		public TextEditorControl TextEditor {
-			get {
-				return ActiveSnippetTabPage.SnippetCompilerControl.TextEditor;
-			}
-		}
-		
-		public SnippetTabPage ActiveSnippetTabPage {
-			get { return fileTabControl.SelectedTab as SnippetTabPage; }
-		}
-		
-		public IViewContent LoadFile(string fileName)
+		public TextEditorControl TextEditor => ActiveSnippetTabPage.SnippetCompilerControl.TextEditor;
+
+        public SnippetTabPage ActiveSnippetTabPage => fileTabControl.SelectedTab as SnippetTabPage;
+
+        public IViewContent LoadFile(string fileName)
 		{
 			// Create a new tab page.
 			var snippetControl = new SharpSnippetCompilerControl();
@@ -251,8 +245,7 @@ namespace ICSharpCode.SharpSnippetCompiler
 		{
 			var references = new List<ReferenceProjectItem>();
 			foreach (var item in project.Items) {
-				var reference = item as ReferenceProjectItem;
-				if (reference != null) {
+                if (item is ReferenceProjectItem reference) {
 					references.Add(reference);
 				}
 			}

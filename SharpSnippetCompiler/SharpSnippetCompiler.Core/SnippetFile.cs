@@ -16,17 +16,13 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 	{
 		public SnippetFile(string fileName)
 		{
-			this.FileName = fileName;
+			FileName = fileName;
 			IsUntitled = false;			
 		}
 			
-		public override IList<IViewContent> RegisteredViewContents {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public override void RegisterView(IViewContent view)
+		public override IList<IViewContent> RegisteredViewContents => throw new NotImplementedException();
+
+        public override void RegisterView(IViewContent view)
 		{
 			throw new NotImplementedException();
 		}

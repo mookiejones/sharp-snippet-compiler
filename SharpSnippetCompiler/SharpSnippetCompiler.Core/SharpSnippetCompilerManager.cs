@@ -31,10 +31,12 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
             {
                 var dataDirectory = Path.Combine(rootPath, "data");
 
-                var startup = new CoreStartup("SharpSnippetCompiler");
-                startup.ConfigDirectory = configDirectory;
-                startup.DataDirectory = dataDirectory;
-                startup.PropertiesName = "SharpSnippetCompiler";
+                var startup = new CoreStartup("SharpSnippetCompiler")
+                {
+                    ConfigDirectory = configDirectory,
+                    DataDirectory = dataDirectory,
+                    PropertiesName = "SharpSnippetCompiler"
+                };
 
                 startup.StartCoreServices();
 						

@@ -33,16 +33,12 @@ namespace ICSharpCode.SharpSnippetCompiler
 {
 	public class SnippetTabPage : TabPage
 	{
-        private SharpSnippetCompilerControl _snippetControl;
-		
-		public SnippetTabPage(SharpSnippetCompilerControl snippetControl)
+        public SnippetTabPage(SharpSnippetCompilerControl snippetControl)
 		{
-			this._snippetControl = snippetControl;
+			SnippetCompilerControl = snippetControl;
 			Controls.Add(snippetControl);
 		}
 		
-		public SharpSnippetCompilerControl SnippetCompilerControl {
-			get { return _snippetControl; }
-		}
-	}
+		public SharpSnippetCompilerControl SnippetCompilerControl { get; }
+    }
 }

@@ -16,8 +16,6 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 		{
 		}
 		
-		public override bool CanRunBuild {
-			get { return true; }
-		}
-	}
+		public override bool CanRunBuild => true;
+    }
 }

@@ -27,6 +27,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 using ICSharpCode.Core;
@@ -93,21 +94,17 @@ namespace ICSharpCode.SharpSnippetCompiler
 		}
 
         private void LoadFiles(IProject project)
-		{
-			foreach (var item in project.Items) {
-				var fileItem = item as FileProjectItem;
-				if (fileItem != null && File.Exists(item.FileName)) {
-					_mainForm.LoadFile(item.FileName);
-				}
-			}
+        {
+            var projectItems = project
+                .Items
+                .OfType<FileProjectItem>()
+                .Where(o => File.Exists(o.FileName));
+
+            foreach (var projectItem in projectItems)
+                _mainForm.LoadFile(projectItem.FileName);
 		}
 
-        private IProject GetCurrentProject()
-		{
-			foreach (var project in ProjectService.OpenSolution.Projects) {
-				return project;
-			}
-			return null;
-		}
+        private IProject GetCurrentProject()=> ProjectService.OpenSolution.Projects.FirstOrDefault();
+
 	}
 }

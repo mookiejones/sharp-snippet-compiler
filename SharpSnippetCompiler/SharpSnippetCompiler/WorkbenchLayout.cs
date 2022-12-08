@@ -32,23 +32,15 @@ using ICSharpCode.SharpSnippetCompiler.Core.Properties;
 
 namespace ICSharpCode.SharpSnippetCompiler
 {
-	public class WorkbenchLayout : IWorkbenchLayout
+	public sealed class WorkbenchLayout : IWorkbenchLayout
 	{
         public event EventHandler ActiveWorkbenchWindowChanged;
 				
-		public IWorkbenchWindow ActiveWorkbenchWindow {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public object ActiveContent {
-			get {
-				throw new NotImplementedException();
-			}
-		}
-		
-		public void Attach(IWorkbench workbench)
+		public IWorkbenchWindow ActiveWorkbenchWindow => throw new NotImplementedException();
+
+        public object ActiveContent => throw new NotImplementedException();
+
+        public void Attach(IWorkbench workbench)
 		{
 			throw new NotImplementedException();
 		}
@@ -99,13 +91,8 @@ namespace ICSharpCode.SharpSnippetCompiler
 		{
 			throw new NotImplementedException();
 		}
-		
-		public IWorkbenchWindow ShowView(IViewContent content)
-		{
-			throw new NotImplementedException();
-		}
-		
-		public IWorkbenchWindow ShowView(IViewContent content, bool switchToOpenedView)
+
+        public IWorkbenchWindow ShowView(IViewContent content, bool switchToOpenedView)
 		{
 			throw new NotImplementedException();
 		}
@@ -120,7 +107,7 @@ namespace ICSharpCode.SharpSnippetCompiler
 			Console.WriteLine(Resources.WorkbenchLayout_StoreConfiguration_WorkbenchLayout_StoreConfiguration_not_implemented);
 		}
 
-		protected virtual void OnActiveWorkbenchWindowChanged(EventArgs e)
+        private void OnActiveWorkbenchWindowChanged(EventArgs e)
 		{
 			if (ActiveWorkbenchWindowChanged != null) {
 				ActiveWorkbenchWindowChanged(this, e);

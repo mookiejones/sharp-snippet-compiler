@@ -30,27 +30,19 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 			Create();			
 		}
 
-		public static string SnippetFileName {
-			get { return GetFullFileName("Snippet.cs"); }
-		}
-		
-		public static string SnippetProjectFileName {
-			get { return GetFullFileName("Snippet.csproj"); }
-		}
-		
-		public override LanguageProperties LanguageProperties {
-			get { return LanguageProperties.None; }
-		}
-		
-		public override string Language {
-			get { return "C#"; }
-		}
-		
-		public const string DefaultTargetsFile = @"$(MSBuildBinPath)\Microsoft.CSharp.Targets";
+        private static string SnippetFileName => GetFullFileName("Snippet.cs");
+
+        private static string SnippetProjectFileName => GetFullFileName("Snippet.csproj");
+
+        public override LanguageProperties LanguageProperties => LanguageProperties.None;
+
+        public override string Language => "C#";
+
+        private const string DefaultTargetsFile = @"$(MSBuildBinPath)\Microsoft.CSharp.Targets";
 
 		protected override void Create(ProjectCreateInformation information)
 		{
-			this.AddImport(DefaultTargetsFile, null);
+			AddImport(DefaultTargetsFile, null);
 			
 			// Add import before base.Create call - base.Create will call AddOrRemoveExtensions, which
 			// needs to change the import when the compact framework is targeted.
@@ -85,12 +77,14 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 
         private void Create()
 		{
-			var info = new ProjectCreateInformation();
-			info.Solution = new Solution();
-			info.OutputProjectFileName = Path.Combine(PropertyService.ConfigDirectory, "SharpSnippet.exe");
-			info.ProjectName = "SharpSnippet";
-			Create(info);			
-			this.Parent = info.Solution;
+			var info = new ProjectCreateInformation
+            {
+                Solution = new Solution(),
+                OutputProjectFileName = Path.Combine(PropertyService.ConfigDirectory, "SharpSnippet.exe"),
+                ProjectName = "SharpSnippet"
+            };
+            Create(info);			
+			Parent = info.Solution;
 		}
 		
 		/// <summary>
