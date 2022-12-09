@@ -1,0 +1,36 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <ComponentGroup Id="Templates" Directory="Templates">
+		  <Component Id="templatesConsoleProject.xpt" Guid="38a3c3f2-89a5-44ca-9825-48950850f824">
+			  <File Id="templatesConsoleProject.xpt" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\ConsoleProject.xpt" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="templatesDefaultAssemblyInfo.boo" Guid="ca8a6b5c-5c81-48c9-84c6-1cd29e87e1ef">
+			  <File Id="templatesDefaultAssemblyInfo.boo" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\DefaultAssemblyInfo.boo" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="templatesEmpty.xft" Guid="9c2b7b28-c602-4c46-9045-9fc92c6755ae">
+			  <File Id="templatesEmpty.xft" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\Empty.xft" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="templatesEmptyClass.xft" Guid="b404c10a-88e9-4bc0-8bc2-1eaa6058e56f">
+			  <File Id="templatesEmptyClass.xft" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\EmptyClass.xft" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="templatesForm.xft" Guid="6584e5b4-1bf3-4a61-ace5-5ae8c87e0bed">
+			  <File Id="templatesForm.xft" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\Form.xft" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="templatesFormsProject.xpt" Guid="58829284-d5a9-4877-abd0-ea4458f69a5d">
+			  <File Id="templatesFormsProject.xpt" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\FormsProject.xpt" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="templatesLibrary.xpt" Guid="6683f2c0-d9b9-458b-88a7-8e9256d6e2be">
+			  <File Id="templatesLibrary.xpt" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Templates\\Library.xpt" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+
+	  </ComponentGroup>
+ 
+  </Fragment>
+</Wix>

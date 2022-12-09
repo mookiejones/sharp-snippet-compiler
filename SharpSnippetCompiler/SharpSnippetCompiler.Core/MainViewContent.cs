@@ -194,6 +194,7 @@ namespace ICSharpCode.SharpSnippetCompiler.Core
 					//return WorkbenchSingleton.SafeThreadFunction<string>(GetText);
 				} else {
 					return GetText();
+
 				}
 			}
 			set {

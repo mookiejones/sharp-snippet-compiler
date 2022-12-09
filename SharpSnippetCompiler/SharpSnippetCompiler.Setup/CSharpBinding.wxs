@@ -1,0 +1,13 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <ComponentGroup Id="CSharpBinding" Directory="CSharpBinding">
+		  <Component Id="csharpbindingCSharpBinding.addin" Guid="eb21252d-1e03-458e-a25c-32744bfa6353">
+			  <File Id="csharpbindingCSharpBinding.addin" Source="AddIns\\AddIns\\BackendBindings\\CSharpBinding\\CSharpBinding.addin" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="csharpbindingCSharpBinding.dll" Guid="93c1d2dd-49ee-44cd-a9cd-ee919b18a3bf">
+			  <File Id="csharpbindingCSharpBinding.dll" Source="AddIns\\AddIns\\BackendBindings\\CSharpBinding\\CSharpBinding.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+	  </ComponentGroup>
+  </Fragment>
+</Wix>

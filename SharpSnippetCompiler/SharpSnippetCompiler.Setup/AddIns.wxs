@@ -1,0 +1,10 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <ComponentGroup Id="AddIns" Directory="AddIns">
+		  <Component Id="ICSharpCode.SharpDevelop.addin" Guid="a3e13f46-5f63-4722-bf50-9f57955f6771">
+			  <File Id="ICSharpCode.SharpDevelop.addin" Source="AddIns\\ICSharpCode.SharpDevelop.addin" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+	  </ComponentGroup>
+  </Fragment>
+</Wix>

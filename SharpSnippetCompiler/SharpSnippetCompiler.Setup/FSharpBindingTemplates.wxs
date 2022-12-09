@@ -1,0 +1,14 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <ComponentGroup Id="FSharpBindingTemplates" Directory="FSharpBindingTemplates">
+		  <Component Id="fSharpTemplatesConsoleProject.xpt" Guid="74b7300f-1de2-44d8-afd2-d51035ae1e87">
+			  <File Id="fSharpTemplatesConsoleProject.xpt" Source="AddIns\\AddIns\\BackendBindings\\FSharpBinding\\Templates\\ConsoleProject.xpt" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="fSharpTemplatesEmptyClass.xft" Guid="7e801b6c-b4e4-4463-be0c-9a70029a4900">
+			  <File Id="fSharpTemplatesEmptyClass.xft" Source="AddIns\\AddIns\\BackendBindings\\FSharpBinding\\Templates\\EmptyClass.xft" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+	  </ComponentGroup>
+  </Fragment>
+</Wix>

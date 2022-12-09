@@ -1,7 +1,28 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <StandardDirectory Id="ProgramFilesFolder">
-      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer) !(bind.Property.ProductName)" />
-    </StandardDirectory>
+		<Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer) !(bind.Property.ProductName)" >
+			 
+			<Directory Id="Data" Name="Data" />
+
+			<Directory Id="AddIns" Name="AddIns" >
+				<Directory Id="AddIns2" Name="AddIns" >
+				<Directory Id="BackendBindings" Name="BackendBindings" >
+					<Directory Id="BooBinding" Name="BooBinding" >
+						<Directory Id="Templates" Name="Templates" />
+					</Directory>
+					<Directory Id="CSharpBinding" Name="CSharpBinding" >
+					</Directory>
+					<Directory Id="FSharpBinding" Name="FSharpBinding" >
+						<Directory Id="FSharpBindingTemplates" Name="Templates" >
+						</Directory>
+					</Directory>
+				</Directory>
+				</Directory>
+			</Directory>
+		</Directory>
+
+	</StandardDirectory>
+	 
   </Fragment>
 </Wix>

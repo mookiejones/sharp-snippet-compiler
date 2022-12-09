@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSnippetCompiler.Core", "SharpSnippetCompiler.Core\SharpSnippetCompiler.Core.csproj", "{5A2EC8F7-2274-4EA3-AC7A-6D1C8598F938}"
 EndProject
 Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "SharpSnippetCompiler.Setup", "SharpSnippetCompiler.Setup\SharpSnippetCompiler.Setup.wixproj", "{DAC9A73F-5F28-4045-B59C-01320ABFB48D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A2EC8F7-2274-4EA3-AC7A-6D1C8598F938} = {5A2EC8F7-2274-4EA3-AC7A-6D1C8598F938}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

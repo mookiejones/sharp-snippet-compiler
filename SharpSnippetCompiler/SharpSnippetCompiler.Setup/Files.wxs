@@ -1,0 +1,121 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="Files" Directory="INSTALLFOLDER">
+		<Component Id="Aga.Controls.dll" Guid="7823215b-75bb-478c-958e-ac54ec08849a">
+			<File Id="Aga.Controls.dll" Source="Aga.Controls.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.Build.Tasks.dll" Guid="783249da-9ffc-4f2f-9f22-98638b3ab8ca">
+			<File Id="ICSharpCode.Build.Tasks.dll" Source="ICSharpCode.Build.Tasks.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.Core.dll" Guid="297b9e8c-fbed-4054-ac97-86125d566124">
+			<File Id="ICSharpCode.Core.dll" Source="ICSharpCode.Core.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.Core.Presentation.dll" Guid="ab3e1efd-a5e3-4688-b1a6-ece13ec7477e">
+			<File Id="ICSharpCode.Core.Presentation.dll" Source="ICSharpCode.Core.Presentation.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.Core.WinForms.dll" Guid="8a03e67b-eb62-4307-b33a-64714cd1fcb3">
+			<File Id="ICSharpCode.Core.WinForms.dll" Source="ICSharpCode.Core.WinForms.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.NRefactory.dll" Guid="d249b7b6-51c9-43b2-903e-0f7d03aa0336">
+			<File Id="ICSharpCode.NRefactory.dll" Source="ICSharpCode.NRefactory.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.BuildWorker.exe" Guid="f44abc48-77c3-4dd7-8d91-0beb375da737">
+			<File Id="ICSharpCode.SharpDevelop.BuildWorker.exe" Source="ICSharpCode.SharpDevelop.BuildWorker.exe" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.BuildWorker.exe.config" Guid="c63a50ba-72b5-4ce9-9f16-b02be18c5900">
+			<File Id="ICSharpCode.SharpDevelop.BuildWorker.exe.config" Source="ICSharpCode.SharpDevelop.BuildWorker.exe.config" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.dll" Guid="bdd649f0-8107-48f7-8df2-e02ff7ba6d45">
+			<File Id="ICSharpCode.SharpDevelop.dll" Source="ICSharpCode.SharpDevelop.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.Dom.dll" Guid="5cd6b01c-8d4d-4a5f-84ef-2da2203e4b84">
+			<File Id="ICSharpCode.SharpDevelop.Dom.dll" Source="ICSharpCode.SharpDevelop.Dom.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.Sda.dll" Guid="f0604502-fd13-4cf8-b9eb-08578656fb05">
+			<File Id="ICSharpCode.SharpDevelop.Sda.dll" Source="ICSharpCode.SharpDevelop.Sda.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.Sda.dll.config" Guid="297dbaee-f119-4c96-b5b6-f1548b5fa846">
+			<File Id="ICSharpCode.SharpDevelop.Sda.dll.config" Source="ICSharpCode.SharpDevelop.Sda.dll.config" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.Sda.xml" Guid="ce8cf899-a187-415c-b377-cafac95f86df">
+			<File Id="ICSharpCode.SharpDevelop.Sda.xml" Source="ICSharpCode.SharpDevelop.Sda.xml" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.SharpDevelop.Widgets.dll" Guid="94f0a07c-5cf8-431e-bfac-31aacca3e834">
+			<File Id="ICSharpCode.SharpDevelop.Widgets.dll" Source="ICSharpCode.SharpDevelop.Widgets.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="ICSharpCode.TextEditor.dll" Guid="56a5a27d-8eb4-4c6d-af93-7db6cf142264">
+			<File Id="ICSharpCode.TextEditor.dll" Source="ICSharpCode.TextEditor.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="log4net.dll" Guid="cbf18bc6-e226-469b-84d9-3c5066037afe">
+			<File Id="log4net.dll" Source="log4net.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="Mono.Cecil.dll" Guid="82a41caf-1a79-4584-b20a-ff5055a9d98c">
+			<File Id="Mono.Cecil.dll" Source="Mono.Cecil.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpDevelop.Build.Common.targets" Guid="b6bc075c-a487-422f-ac53-8fcd73e82920">
+			<File Id="SharpDevelop.Build.Common.targets" Source="SharpDevelop.Build.Common.targets" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpDevelop.Build.CSharp.targets" Guid="d2b7cf5e-04fc-485d-8103-c2bc835d6f64">
+			<File Id="SharpDevelop.Build.CSharp.targets" Source="SharpDevelop.Build.CSharp.targets" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpDevelop.Build.MSIL.targets" Guid="39f7dd3e-19be-412e-bfb4-6b0d44f9a579">
+			<File Id="SharpDevelop.Build.MSIL.targets" Source="SharpDevelop.Build.MSIL.targets" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpDevelop.Build.VisualBasic.targets" Guid="64330d20-07b0-454b-84a7-491979cf2c77">
+			<File Id="SharpDevelop.Build.VisualBasic.targets" Source="SharpDevelop.Build.VisualBasic.targets" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpDevelop.CheckMSBuild35Features.targets" Guid="a41438ee-ba4b-4d2c-a23a-3c3d47ee99ef">
+			<File Id="SharpDevelop.CheckMSBuild35Features.targets" Source="SharpDevelop.CheckMSBuild35Features.targets" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpDevelop.CodeAnalysis.targets" Guid="76a946e0-5fda-4153-803a-98c97eb09bd1">
+			<File Id="SharpDevelop.CodeAnalysis.targets" Source="SharpDevelop.CodeAnalysis.targets" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpSnippetCompiler.Core.dll" Guid="8cd86ea9-9cf6-4db5-af54-f209e7224420">
+			<File Id="SharpSnippetCompiler.Core.dll" Source="SharpSnippetCompiler.Core.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpSnippetCompiler.Core.pdb" Guid="2d531ae0-61fb-4c83-908c-adefef209148">
+			<File Id="SharpSnippetCompiler.Core.pdb" Source="SharpSnippetCompiler.Core.pdb" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpSnippetCompiler.exe" Guid="55a61164-5d40-47c5-804c-ffed47c4a5b4">
+			<File Id="SharpSnippetCompiler.exe" Source="SharpSnippetCompiler.exe" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpSnippetCompiler.exe.config" Guid="6ff7784f-e57c-4b53-8bf3-de134f57211f">
+			<File Id="SharpSnippetCompiler.exe.config" Source="SharpSnippetCompiler.exe.config" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="SharpSnippetCompiler.pdb" Guid="ff26d2e8-5127-4403-b287-524e7d96bf18">
+			<File Id="SharpSnippetCompiler.pdb" Source="SharpSnippetCompiler.pdb" KeyPath="yes" Checksum="yes"/>
+		</Component>
+
+		<Component Id="WeifenLuo.WinFormsUI.Docking.dll" Guid="dfac741a-0f45-4ec1-80bc-c51b02f2c9cd">
+			<File Id="WeifenLuo.WinFormsUI.Docking.dll" Source="WeifenLuo.WinFormsUI.Docking.dll" KeyPath="yes" Checksum="yes"/>
+		</Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

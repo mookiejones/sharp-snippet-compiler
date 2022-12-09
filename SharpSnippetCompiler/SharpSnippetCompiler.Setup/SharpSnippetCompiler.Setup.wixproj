@@ -1,4 +1,18 @@
 ﻿<Project Sdk="WixToolset.Sdk/4.0.0-preview.1">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <CompilerAdditionalOptions>
+    </CompilerAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CompilerAdditionalOptions>
+    </CompilerAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <CompilerAdditionalOptions>-ext WixNetFxExtension</CompilerAdditionalOptions>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WiX.Toolset" Version="3.9.1208" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpSnippetCompiler\SharpSnippetCompiler.csproj" />
   </ItemGroup>

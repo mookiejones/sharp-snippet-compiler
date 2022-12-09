@@ -343,6 +343,22 @@ namespace ICSharpCode.SharpSnippetCompiler
 			project.Save();
 		}
 
+        private void FileSaveToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            var activeTabPage = ActiveSnippetTabPage;
+
+			var sfd = new SaveFileDialog();
+            sfd.Title = "Save File";
+            sfd.Filter = "C# Files (*.cs)|*.cs|All Files (*.*)|*.*";
+            sfd.DefaultExt = "cs";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                var text = activeTabPage.SnippetCompilerControl.TextEditor.Text;
+				File.WriteAllText(sfd.FileName,text);
+            }
+        }
+
         private void FileCloseToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			var activeTabPage = ActiveSnippetTabPage;
@@ -368,5 +384,7 @@ namespace ICSharpCode.SharpSnippetCompiler
 				}
 			}
 		}
-	}
+
+      
+    }
 }

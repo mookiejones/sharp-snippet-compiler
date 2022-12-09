@@ -2,8 +2,14 @@
   <Package Name="SharpSnippetCompiler.Setup" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="8882fc5c-7aa9-475c-b12f-2892123a4116">
     <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
-    <Feature Id="Main">
-      <ComponentGroupRef Id="ExampleComponents" />
+    <Feature Id="Main" Title="SharpSnippetCompiler" Description="A small C# IDE, based on a sample project distributed with SharpDevelop v3.">
+      <ComponentGroupRef Id="Files" />
+      <ComponentGroupRef Id="AddIns" />
+      <ComponentGroupRef Id="Templates" />
+      <ComponentGroupRef Id="CSharpBinding" />
+
+      <ComponentGroupRef Id="FSharpBindingTemplates" />
     </Feature>
   </Package>
-</Wix>
+	 	</Wix>
+ 

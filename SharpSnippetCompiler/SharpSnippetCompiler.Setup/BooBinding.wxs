@@ -1,0 +1,70 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <ComponentGroup Id="BooBinding" Directory="BooBinding">
+		  <Component Id="boobindingBoo.Lang.CodeDom.dll" Guid="2f19712f-ce12-488b-b260-f805b6805f4e">
+			  <File Id="boobindingBoo.Lang.CodeDom.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.CodeDom.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.Compiler.dll" Guid="aa3fec48-aebb-494f-b030-55efb8cac1c8">
+			  <File Id="boobindingBoo.Lang.Compiler.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.Compiler.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.dll" Guid="8ee87e0a-7920-458d-85d0-c4b5a719b6a0">
+			  <File Id="boobindingBoo.Lang.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.Extensions.dll" Guid="48179709-9d72-4aa7-a1e0-0932e2b1205d">
+			  <File Id="boobindingBoo.Lang.Extensions.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.Extensions.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.Interpreter.dll" Guid="ed1d5e45-dfab-4f80-85a4-64a61e848dab">
+			  <File Id="boobindingBoo.Lang.Interpreter.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.Interpreter.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.Parser.dll" Guid="7609ced8-f694-4c15-b1ee-0be72b23df8d">
+			  <File Id="boobindingBoo.Lang.Parser.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.Parser.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.PatternMatching.dll" Guid="5b14cf96-04ec-48e3-ae3d-d4913cb2efad">
+			  <File Id="boobindingBoo.Lang.PatternMatching.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.PatternMatching.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Lang.Useful.dll" Guid="34c62277-3601-4968-992c-046da1957f47">
+			  <File Id="boobindingBoo.Lang.Useful.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Lang.Useful.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Microsoft.Build.targets" Guid="237c1dc8-1bb3-4b3a-a373-09877c396e57">
+			  <File Id="boobindingBoo.Microsoft.Build.targets" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Microsoft.Build.targets" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBoo.Microsoft.Build.Tasks.dll" Guid="5bfd6624-cb3c-44b1-a7bc-2d28cfc3d6cd">
+			  <File Id="boobindingBoo.Microsoft.Build.Tasks.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\Boo.Microsoft.Build.Tasks.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBooBinding.addin" Guid="e2ab93af-3611-4e47-a56d-975e48d5cc10">
+			  <File Id="boobindingBooBinding.addin" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\BooBinding.addin" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBooBinding.dll" Guid="ef403d1a-fb73-4cdc-bf89-24c5f70fbb58">
+			  <File Id="boobindingBooBinding.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\BooBinding.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBooc.exe" Guid="e480e1d4-4d28-4553-91c2-d5984e19d81a">
+			  <File Id="boobindingBooc.exe" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\booc.exe" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBooc.exe.config" Guid="0ca5bd8d-2a59-4a39-a89e-0adff27bccec">
+			  <File Id="boobindingBooc.exe.config" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\booc.exe.config" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingBooc.rsp" Guid="5405b80e-a7fa-4ac3-ac3f-ff7690030032">
+			  <File Id="boobindingBooc.rsp" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\booc.rsp" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+		  <Component Id="boobindingNRefactoryToBooConverter.dll" Guid="058bbdd7-e667-4781-997a-146cfc3ca3d4">
+			  <File Id="boobindingNRefactoryToBooConverter.dll" Source="AddIns\\AddIns\\BackendBindings\\BooBinding\\NRefactoryToBooConverter.dll" KeyPath="yes" Checksum="yes"/>
+		  </Component>
+
+	  </ComponentGroup>
+  </Fragment>
+</Wix>
